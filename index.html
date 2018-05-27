@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>GGJ Theme: Ritual</title>
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"><center>Loading...
+
+        WASD to move.
+        Mouse to look.
+        Press and hold 'E' near gravestone to perform ritual.
+
+        Many bugs. Much fun.</center></div>
+
+        <script type="application/x-glsl" id="sky-vertex">
+            varying vec2 vUV;
+
+            void main(){
+                vUV = uv;
+                vec4 pos = vec4(position, 1.0);
+                gl_Position = projectionMatrix * modelViewMatrix * pos;
+            }
+        </script>
+
+        <script type="application/x-glsl" id="sky-fragment">
+            uniform sampler2D texture;
+            varying vec2 vUV;
+
+            void main(){
+                vec4 sample = texture2D(texture, vUV);
+                gl_FragColor = vec4(sample.xyz, sample.w);
+            }
+        </script>
+        
+        <script src="./js/three.js"></script>
+        <script src="./js/controls.js"></script>
+        <script src="./js/perlin.js"></script>
+        <script src="./js/particle_system.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
